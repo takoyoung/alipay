@@ -1,3 +1,4 @@
+include ':alipaySdk-15.7.4-20200228192259'
 include ':app:alipaylib'
 include ':app'
 rootProject.name = "alipay"
