@@ -38,5 +38,5 @@ dependencies {
 
     implementation 'com.alibaba:fastjson:1.2.55'
     implementation 'com.github.takoyoung:thirdpartycallback:+'
-    implementation project(":alipaySdk-15.7.4-20200228192259")
+    compileOnly files("libs/alipaySdk-15.7.4-20200228192259.aar")
 }
