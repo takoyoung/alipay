@@ -26,6 +26,10 @@ public class Alipay extends ThirdPartyCallback {
     }
 
     private void doPay(int callbackId, final Map map){
+        if(!checkCallbackId(callbackId)){
+            return;
+        }
+
         JSONObject payData = new JSONObject(map);
         Map<String, String> params = AlipayParams.buildOrderParamMap(payData);
         String orderParam = AlipayParams.buildOrderParam(params);   // 订单信息
@@ -37,18 +41,14 @@ public class Alipay extends ThirdPartyCallback {
         }
         final String orderInfo = orderParam + "&sign=" + signStr;
 
-        Runnable payRunnable = new Runnable() {
+        Runnable payRunnable = () -> {
+            PayTask alipay = new PayTask(mActivity);
+            Map <String,String> result = alipay.payV2(orderInfo,true);
 
-            @Override
-            public void run() {
-                PayTask alipay = new PayTask(mActivity);
-                Map <String,String> result = alipay.payV2(orderInfo,true);
-
-                Message msg = new Message();
-                msg.what = CALL_SUCCESS;
-                msg.obj = result;
-                handler.sendMessage(msg);
-            }
+            Message msg = new Message();
+            msg.what = CALL_SUCCESS;
+            msg.obj = result;
+            handler.sendMessage(msg);
         };
         // 必须异步调用
         Thread payThread = new Thread(payRunnable);
