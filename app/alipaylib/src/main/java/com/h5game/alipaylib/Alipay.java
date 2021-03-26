@@ -1,6 +1,7 @@
 package com.h5game.alipaylib;
 
 import android.app.Activity;
+import android.os.Message;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.sdk.app.PayTask;
@@ -42,6 +43,11 @@ public class Alipay extends ThirdPartyCallback {
             public void run() {
                 PayTask alipay = new PayTask(mActivity);
                 Map <String,String> result = alipay.payV2(orderInfo,true);
+
+                Message msg = new Message();
+                msg.what = CALL_SUCCESS;
+                msg.obj = result;
+                handler.sendMessage(msg);
             }
         };
         // 必须异步调用
