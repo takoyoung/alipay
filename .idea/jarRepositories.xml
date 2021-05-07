@@ -36,5 +36,15 @@
       <option name="name" value="maven2" />
       <option name="url" value="https://raw.githubusercontent.com/takoyoung/alipayofficalaar/master" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven2" />
+      <option name="name" value="maven2" />
+      <option name="url" value="https://raw.githubusercontent.com/takoyoung/arrgroups/master" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven2" />
+      <option name="name" value="maven2" />
+      <option name="url" value="https://raw.githubusercontent.com/takoyoung/aargroups/master" />
+    </remote-repository>
   </component>
 </project>

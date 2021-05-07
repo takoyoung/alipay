@@ -13,7 +13,8 @@ import java.util.Map;
 
 public class Alipay extends ThirdPartyCallback {
 
-    public Alipay(Activity activity){
+    public Alipay(Activity activity, String className){
+        super(className);
         this.mActivity = activity;
     }
 
